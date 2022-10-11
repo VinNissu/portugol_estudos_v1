@@ -28,38 +28,30 @@
 <body>
     <main class="container d-flex flex-column align-items-center p-5">
 
-        <h1 class="m-2 text-center">Joãozinho vai ao cinema. </h1>
+        <h1 class="m-2 text-center">Joãozinho vai ao cinema</h1>
 
         <!-- ENTRADA  -->
         <div class="card m-5">
             <div class="card-body">
                 <!-- insira os campos de formulário aqui -->
-                
                 <form id="entrada">
                     <div class="mb-3">
-                      <label for="filme" class="form-label">nome do filme</label>
+                      <label for="filme" class="form-label">Nome do Filme:</label>
                       <input type="text"
-                        class="form-control" name="filme" id="filme"  placeholder="digite aqui">
-
+                        class="form-control" name="filme" id="filme" placeholder="Digite o nome do filme" value="">
                     </div>
 
                     <div class="mb-3">
-                      <label for="" class="form-label">Digite a faixa etária</label>
+                      <label for="classificacao" class="form-label">Digite a faixa etária:</label>
                       <input type="number"
-                        class="form-control" name="" id="classificacao" placeholder="faixa ">
+                        class="form-control" name="classificacao" id="classificacao" placeholder="Idade">
                     </div>
 
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                        <label class="form-check-label"  for="flexSwitchCheckDefault">Aceito os termos </label>
-                      </div>
-
-                      <button type="submit" class="btn btn-primary" id="enviar">Enviar</button>
-
+                    <button type="submit" class="btn btn-primary">Processar...</button>
                 </form>
 
             </div>
-        </div
+        </div>
 
 
 
@@ -67,7 +59,11 @@
         <div class="card m-5">
             <div class="card-body">
                 <!-- insira os elementos de saída aqui -->
-                <p id="resposta" class="text-center">Joao pode assistir esse filme?</p>
+                <p id="resposta" class="text-center">Joãozinho pode assistir esse filme?
+                    <br>
+                    <span  id="resposta-txt" class="fw-bold fs-1"></span>
+
+                </p>
             </div>
         </div>
 
@@ -85,21 +81,20 @@
 
     <!-- código javascript personalizado  -->
     <script>
-        
         var entrada = document.getElementById('entrada')
 
-           entrada.addEventListener('submit', ()=>{
+        entrada.addEventListener('submit', (evt)=>{
             let nomeFilme = document.getElementById('filme').value
-            let classificacao = document;getElementById('classificacao').value
-            
-            if(classificacao >= 18){
-            alert("Joao nao pode ver")
-            }
-            else{
-                alert("pode")
-            }
-        })
+            let classificacao = document.getElementById('classificacao').value
 
+            if(classificacao >= 18){
+                document.getElementById("resposta-txt").innerHTML = "Pode não meu peixe";
+            }else{
+                document.getElementById("resposta-txt").innerHTML = "Pode meu peixe";
+            }
+            //evita a atualização da página no evento submit
+            evt.preventDefault()
+        })
 
     </script>
 </body>
