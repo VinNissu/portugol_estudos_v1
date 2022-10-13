@@ -16,7 +16,7 @@
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <link rel="stylesheet" href="./css/style.css">k
+    <link rel="stylesheet" href="./css/style.css">
     <!-- regras CSS personalizadas -->
     <style>
         body {
@@ -37,14 +37,14 @@
                 <!-- insira os campos de formulário aqui -->
                 <form id="entrada">
                     <div class="mb-3">
-                      <label for="numero" class="form-label">
-                          Digite o número  da tabuada
-                      </label>
-                      <input type="number"
-                        class="form-control" name="numero" id="numero">
+                        <label for="numero" class="form-label">
+                            Digite o número da tabuada
+                        </label>
+                        <input type="number" class="form-control" name="numero" id="numero">
                     </div>
 
-                    <div class="d-flex justify-content-center"><button type="submit" class="btn btn-primary">Criar tabuada...</button></div>
+                    <div class="d-flex justify-content-center"><button type="submit" class="btn btn-primary">Criar
+                            tabuada...</button></div>
                 </form>
 
             </div>
@@ -57,51 +57,13 @@
             <div class="card-body ">
                 <!-- insira os elementos de saída aqui -->
                 <div class="p-4" id="resposta">
-                    <div class="table-responsive ">
-                        <table class="table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col" colspan="3" >Tabuada do número 7</th>
-                                    
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="">
-                                    <td scope="row">7</td>
-                                    <td>x</td>
-                                    <td>1</td>
-                                    <td>=</td>
-                                    <td>7</td>
-                                </tr>
-                                <tr class="">
-                                    <td scope="row">7</td>
-                                    <td>x</td>
-                                    <td>1</td>
-                                    <td>=</td>
-                                    <td>7</td>
-                                </tr>
-                                <tr class="">
-                                    <td scope="row">7</td>
-                                    <td>x</td>
-                                    <td>1</td>
-                                    <td>=</td>
-                                    <td>7</td>
-                                </tr>
-                                <tr class="">
-                                    <td scope="row">7</td>
-                                    <td>x</td>
-                                    <td>1</td>
-                                    <td>=</td>
-                                    <td>7</td>
-                                </tr>
 
-                            </tbody>
-                        </table>
-                    </div>
-                    
+
+
 
                 </div>
-                
+
+
             </div>
         </div>
 
@@ -120,19 +82,49 @@
     <!-- código javascript personalizado  -->
     <script>
 
-var entrada = document.getElementById('entrada')
+        var entrada = document.getElementById('entrada')
 
-entrada.addEventListener('submit', (e) => {
-    // laço de repetição para 10 etapas
+        entrada.addEventListener('submit', (e) => {
 
-    let numero = document.getElementById('numero').value
+            let numero = document.getElementById('numero').value
 
-    for (let contador = 1; contador <= 10; contador++) {
-        console.log(` ${numero} X ${contador} =  ${numero * contador}`)
-        
-    }    
-    
-    e.preventDefault()  
+            var tableStart = `
+<div class="table-responsive ">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col" colspan="3" >Tabuada do número ${numero}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                    `
+                    var tableMiddle = `` 
+                    var tableEnd = `</tbody>
+                                             </table>
+                                             </div>` 
+
+
+ 
+
+
+            // laço de repetição para 10 etapas
+            for (let contador = 1; contador <= 10; contador++) {
+               
+                tableMiddle += `
+                        <tr>
+                        <td>${numero}</td>
+                        <td>x</td>
+                        <td>${contador}</td>
+                        <td>=</td>
+                        <td>${numero * contador}</td>
+                `
+
+            }
+                       // insere uma tabela dentro da div id="resposta"
+                       document.getElementById("resposta").innerHTML = tableStart + tableMiddle + tableEnd
+
+            e.preventDefault()
         })
 
     </script>
