@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.0-beta1 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <!-- ícones  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- regras CSS personalizadas -->
+    <style>
+        body {
+            background-color: #e2e2e2;
+        }
+
+        h3{
+            color: rgb(255, 255, 255);
+            background: black;
+        }
+        #color{
+            background-color: black;
+        }
+
+        #numero{
+            color: rgb(43, 0, 255);
+        }
+
+        #numero:hover{
+            color: white;
+        }
+
+        #saida{
+            color: white;
+          
+           
+        }
+    </style>
+
+</head>
+
+<body>
+    <main class="container d-flex flex-column align-items-center p-5">
+
+        <h1 class="m-2 text-center fw-bold">Sorteio de <span id="numero" ></span> jogadores</h1>
+
+        <!-- ENTRADA  -->
+        <div class="card m-5">
+            <div class="card-body">
+                <!-- insira os campos de formulário aqui -->
+                <form id="entrada">
+                    <div class="mb-3">
+                      <label for="" class="form-label fw-bold">Player's name</label>
+                      <input type="text"
+                        class="form-control" name="nome" id="nome" placeholder="Digite aqui">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+
+            </div>
+        </div>
+
+
+
+        <!-- SAÍDA  -->
+        <div class="card m-5" id="color">
+            <div class="card-body">
+                <!-- insira os elementos de saída aqui -->
+                <h3 class="text-center  alert-primary fs-1 fw-bold">Players:</h3>
+                <p class="text-center" id="saida"></p>
+                <h1 class="text-center" id="sorteado"></h1>
+            </div>
+        </div>
+
+    </main>
+
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+        integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous">
+        </script>
+
+    <!-- código javascript personalizado  -->
+    <script>
+
+        //variáveis e funções 
+        const totalplayers = 4
+        var contador =  1
+        //aray de jogadores (para o sorteio)
+        var jogadores = []
+
+        // perfeito, muito bom!!. 
+
+
+        // execuções automáticas e eventos 
+        document.getElementById('numero').innerText = totalplayers
+        //perfeito, muito bom!!
+
+
+        //entrada de dados do submit
+        document.getElementById('entrada').addEventListener('submit',(e)=>{
+
+            //Guarda o valor digitado no  campo nome
+            let nomeDigitado = document.getElementById('nome').value
+
+
+            //SOMENTE QUANDO TOTALJOGADOR FOR MENOR QUE 5
+
+            if(contador <= totalplayers ){
+            document.getElementById('saida').innerHTML += nomeDigitado + ',' + '\n'
+            document.getElementById('nome').value = ""
+            //isto vai preencher a array jogadores
+            jogadores.push = (nomeDigitado)
+
+            }else{
+                let sorteio = Math.trunc(Math.random()*totalplayers  )
+                if(sorteio >3 ){
+                    return
+                }
+                document.getElementById('sorteado').innerText = `O jogador sorteado foi ${jogadores[sorteio]}`
+        
+            }
+            contador ++
+            e.preventDefault()
+
+            console.log(contador,jogadores)
+        })
+        //magistrado
+
+    </script>
+</body>
+
+</html>
